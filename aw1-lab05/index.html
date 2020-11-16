@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Verifica se o ano é bissexto</title>
+    <meta charset="utf-8" />
+    <script>
+      function validar(){
+       let ano = parseInt(document.getElementById("ano").value);
+       resposta = document.getElementById('resposta');
+
+       if (ano%400 == 0)
+        resposta.innerHTML="É bissexto";
+       else
+        if(ano%4==0 && ano%100!=0)
+         resposta.innerHTML="É bissexto";
+        else
+         resposta.innerHTML="Não é bissexto";
+     }
+    </script>
+  </head>
+  <body>
+      digite um ano: <input type="number" id="ano"><br/>
+      <p><button onclick="validar()">Verificar se o ano atual é bissexto!</button></p>
+      Resposta: <div id='resposta' style='display:inline'></div>
+
+  </body>
+</html>

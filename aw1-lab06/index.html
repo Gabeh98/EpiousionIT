@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Criação Dinâmica de Elementos HTML</title>
+        <meta charset="utf-8" />
+        
+
+        <script>
+            
+            var contador = 2;
+            function adicionarLinha() {
+                var tabela = document.getElementById("tabelaContatos");
+
+                var linha = document.createElement("tr");
+                var idLinha = "linha" + contador;
+                linha.setAttribute("id", idLinha);
+                var primeiraCelula = document.createElement("td");
+                var segundaCelula = document.createElement("td");
+                var terceiraCelula = document.createElement("td");
+                var quartaCelula = document.createElement("td");
+
+                primeiraCelula.appendChild(document.createTextNode("Nome:"));
+
+                var tfNome = document.createElement("input");
+                tfNome.setAttribute("type", "text");
+                tfNome.setAttribute("size", 20);
+                tfNome.setAttribute("name", "nome" + contador);
+                segundaCelula.appendChild(tfNome);
+
+                terceiraCelula.appendChild(document.createTextNode("Telefone:"));
+
+                var tfTelefone = document.createElement("input");
+                tfTelefone.setAttribute("type", "text");
+                tfTelefone.setAttribute("size", 10);
+                tfTelefone.setAttribute("name", "telefone" + contador++);
+                quartaCelula.appendChild(tfTelefone);
+
+                linha.appendChild(primeiraCelula);
+                linha.appendChild(segundaCelula);
+                linha.appendChild(terceiraCelula);
+                linha.appendChild(quartaCelula);
+
+                var quintaCelula = document.createElement("td");
+
+                var btRemover = document.createElement("input");
+                btRemover.setAttribute("type","button");
+                btRemover.setAttribute("value","Remover Contato");
+                btRemover.setAttribute("onclick","removerLinha('"+idLinha+"');");
+                
+                quintaCelula.appendChild(btRemover);
+                linha.appendChild(quintaCelula);
+
+                tabela.appendChild(linha);
+            }
+            function removerLinha(linhaId) {
+                var linha = document.getElementById(linhaId);
+                linha.parentNode.removeChild(linha);
+            }
+            
+        </script>
+
+    </head>
+    <body>
+        <div class="tabelaGC">
+
+            <table>
+                <tr>
+                    <td class="coluna1"></td>
+                    <td class="coluna2">Criação Dinâmica de Elementos HTML</td>
+                    <td class="coluna3"></td>
+                </tr>
+            </table>
+
+            <form name="formulario" action="http://www.globalcode.com.br" method="post">
+                <fieldset>
+                    <legend>Cadastro de Contatos</legend>
+                    <input type="button" onclick="adicionarLinha()" value="Adicionar">
+                    <table id="tabelaContatos">
+                        <tr id="linha1">
+                            <td>
+                                Nome:
+                            </td>
+                            <td>
+                                <input name="nome1" type="text" size="20">
+                            </td>
+                            <td>
+                                Telefone:
+                            </td>
+                            <td>
+                                <input name="telefone1" type="text" size="10">
+                            </td>
+                            <td>
+                                <input type='button' onclick="removerLinha('linha1');" value='Remover contato' />
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+
+            </form>
+        </div>
+    </body>
+</html>
